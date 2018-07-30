@@ -18,11 +18,13 @@ BaselineOfGarage >> baseline: spec [
 					repository: 'http://smalltalkhub.com/mc/PharoExtras/JSON/main/' ].
 		spec 
 			package: 'Garage';
+			package: 'Garage-Tests' with: [ spec requires: #('Garage') ];
 			package: 'Garage-Mysql' with: [ spec requires: #('Garage' ) ];
 			package: 'Garage-Sqlite3' with: [spec requires: #('Garage' )];
 			package: 'Garage-Postgres' with: [spec requires: #('Garage' 'JSON' )].
 		spec 
 			group: 'default' with: #('ALL' );
+			group: 'tests' with: #('Garage-Tests');
 			group: 'mysql' with: #('Garage-Mysql' );
 			group: 'sqlite3' with: #('Garage-Sqlite3' );			
 			group: 'pgsqlV2' with: #('Garage-Postgres' );
