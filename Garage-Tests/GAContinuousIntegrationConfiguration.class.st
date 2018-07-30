@@ -4,7 +4,7 @@ This class has methods to configure the connection strings to run the tests from
 Class {
 	#name : #GAContinuousIntegrationConfiguration,
 	#superclass : #Object,
-	#category : 'Garage-CI'
+	#category : #'Garage-Tests-CI'
 }
 
 { #category : #'as yet unclassified' }
