@@ -15,9 +15,10 @@ Class {
 	#instVars : [
 		'connectionString',
 		'options',
-		'platform'
+		'platform',
+		'rawConnectionString'
 	],
-	#category : 'Garage-Driver'
+	#category : #'Garage-Driver'
 }
 
 { #category : #'instance creation' }
@@ -61,9 +62,10 @@ GAConnectionString >> host [
 	^ connectionString host ifNil: ''
 ]
 
-{ #category : #'initialize - release' }
+{ #category : #initialization }
 GAConnectionString >> initializeFromString: aString [ 
 	
+	rawConnectionString := aString.
 	connectionString := aString asUrl
 ]
 
@@ -115,6 +117,12 @@ GAConnectionString >> platform: aPlatform [
 GAConnectionString >> port [
 	
 	^ connectionString port
+]
+
+{ #category : #accessing }
+GAConnectionString >> rawConnectionString [
+	
+	^ rawConnectionString
 ]
 
 { #category : #accessing }

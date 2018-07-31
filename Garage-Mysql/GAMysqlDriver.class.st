@@ -39,12 +39,6 @@ GAMysqlDriver class >> initialize [
 	self subscribeDriver
 ]
 
-{ #category : #tests }
-GAMysqlDriver class >> newFixture [
-	
-	^ GADriverMysqlTestFixture new
-]
-
 { #category : #encoding }
 GAMysqlDriver class >> supportsEncoding: aString [ 
 	

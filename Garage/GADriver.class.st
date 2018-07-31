@@ -52,11 +52,13 @@ GADriver class >> driverManager [
 ]
 
 { #category : #'instance-creation' }
-GADriver class >> fromConnectionString: string [
-	
+GADriver class >> fromConnectionString: aConnectionOrString [
 	| connectionString |
-	string isString ifTrue: [connectionString := GAConnectionString fromString: string]
-		ifFalse: [ connectionString := string ].
+	
+	connectionString := aConnectionOrString isString 
+		ifTrue: [ GAConnectionString fromString: aConnectionOrString]
+		ifFalse: [ aConnectionOrString ].
+	
 	^ (self driverAt: connectionString driverId) fromConnectionString: connectionString
 ]
 
@@ -70,18 +72,6 @@ GADriver class >> initialize [
 GADriver class >> isAvailable: aKey [
 	
 	^ Drivers isAvailable: aKey
-]
-
-{ #category : #tests }
-GADriver class >> newFixture [
-
-	^ self subclassResponsibility
-]
-
-{ #category : #tests }
-GADriver class >> newFixtureForConnectionString: aConnectionString [
-
-	^ self newFixture
 ]
 
 { #category : #drivers }

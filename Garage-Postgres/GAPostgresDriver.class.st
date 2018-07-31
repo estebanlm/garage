@@ -34,12 +34,6 @@ GAPostgresDriver class >> initialize [
 	self subscribeDriver
 ]
 
-{ #category : #tests }
-GAPostgresDriver class >> newFixture [
-	
-	^ GADriverPostgresqlTestFixture new
-]
-
 { #category : #encoding }
 GAPostgresDriver class >> supportsEncoding: aString [ 
 	

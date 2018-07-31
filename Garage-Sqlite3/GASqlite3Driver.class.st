@@ -30,12 +30,6 @@ GASqlite3Driver class >> initialize [
 	self subscribeDriver
 ]
 
-{ #category : #tests }
-GASqlite3Driver class >> newFixture [
-	
-	^ GADriverSQLiteTestFixture new
-]
-
 { #category : #encoding }
 GASqlite3Driver class >> supportsEncoding: anEncoding [
 	
