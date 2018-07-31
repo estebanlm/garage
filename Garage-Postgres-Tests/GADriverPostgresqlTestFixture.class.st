@@ -1,48 +1,45 @@
 Class {
-	#name : #GADriverMysqlTestFixture,
+	#name : #GADriverPostgresqlTestFixture,
 	#superclass : #GADriverTestFixture,
-	#category : 'Garage-Tests'
+	#category : #'Garage-Postgres-Tests'
 }
 
 { #category : #'as yet unclassified' }
-GADriverMysqlTestFixture >> createDatabase [
+GADriverPostgresqlTestFixture >> createDatabase [
 
-	setupConnection execute: 'CREATE DATABASE sodbxtest
-	CHARACTER SET utf8mb4'.
+	setupConnection execute: 'CREATE DATABASE sodbxtest'.
 ]
 
 { #category : #'as yet unclassified' }
-GADriverMysqlTestFixture >> createTables [
+GADriverPostgresqlTestFixture >> createTables [
 
-	self connection execute: 'CREATE TABLE IF NOT EXISTS student(
-	   id INTEGER AUTO_INCREMENT,
+	self connection execute: 'CREATE TABLE student(
+   	   id SERIAL PRIMARY KEY,
+	   name_surname VARCHAR,	
 	   username VARCHAR(10),
-	   pass VARCHAR(50),
+         pass VARCHAR(200),
 	   mail VARCHAR(50),
-	   name_surname VARCHAR(30),	   
-	   regular BOOLEAN,
+         regular BOOLEAN,
 	   age SMALLINT,	   
 	   average_grade DECIMAL(9,3),
 	   sex CHARACTER(3),
-	   description VARCHAR(200),
+	   description VARCHAR,
 	   starting_hour TIME,
-	   sign_up_date DATETIME,
+	   sign_up_date TIMESTAMP,
 	   born_date DATE,
-	   nullable_field VARCHAR(64) NULL,
-	  CONSTRAINT pk_students_id PRIMARY KEY (id)
-	) ENGINE = InnoDB ;
-'.
+	   nullable_field VARCHAR(64) NULL
+	)'.
 "The InnoDB engine is in order to have transaction in this table"
 	
 	self connection execute: 'CREATE TABLE IF NOT EXISTS signature(
 	code INTEGER, 
 	id_student INTEGER,
-	name CHAR(100),
+	name VARCHAR(100),
 	observations VARCHAR(255),
 	course_grade INTEGER,
 	final_grade INTEGER,
 	CONSTRAINT pk_signatures_code PRIMARY KEY (id_student, code)
-) ENGINE = InnoDB '.
+)'.
 "The InnoDB engine is in order to have transaction in this table"
 
 	self connection execute: 'CREATE TABLE IF NOT EXISTS course(
@@ -51,7 +48,7 @@ GADriverMysqlTestFixture >> createTables [
 	signature_code INTEGER,
 	starting_date DATE,
 	CONSTRAINT pk_courses_id_course PRIMARY KEY (id_student, signature_code)
-) ENGINE = InnoDB '.
+)'.
 "The InnoDB engine is in order to have transaction in this table"
 
 	self connection execute: 'ALTER TABLE signature
@@ -59,17 +56,14 @@ GADriverMysqlTestFixture >> createTables [
 ]
 
 { #category : #'as yet unclassified' }
-GADriverMysqlTestFixture >> dropDatabase [
+GADriverPostgresqlTestFixture >> dropDatabase [
 
-	setupConnection ifNil: [ ^ self ].
-	setupConnection execute: 'drop database if exists sodbxtest'.
+	setupConnection execute: 'DROP DATABASE IF EXISTS sodbxtest'.
 ]
 
 { #category : #'as yet unclassified' }
-GADriverMysqlTestFixture >> dropTables [
+GADriverPostgresqlTestFixture >> dropTables [
 
-	self connection execute: 'ALTER TABLE signature
-	DROP FOREIGN KEY se_st_fk'.
 	self connection execute: 'DROP TABLE IF EXISTS course CASCADE'.
 	self connection execute: 'DROP TABLE IF EXISTS signature CASCADE'. 
 	self connection execute: 'DROP TABLE IF EXISTS student CASCADE'.

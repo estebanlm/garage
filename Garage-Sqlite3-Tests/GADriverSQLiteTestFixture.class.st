@@ -1,7 +1,7 @@
 Class {
 	#name : #GADriverSQLiteTestFixture,
 	#superclass : #GADriverTestFixture,
-	#category : 'Garage-Tests'
+	#category : #'Garage-Sqlite3-Tests'
 }
 
 { #category : #'as yet unclassified' }
