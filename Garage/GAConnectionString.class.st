@@ -65,7 +65,7 @@ GAConnectionString >> host [
 { #category : #initialization }
 GAConnectionString >> initializeFromString: aString [ 
 	
-	rawConnectionString := aString.
+	rawConnectionString := aString allButFirst: (aString indexOfSubCollection: '://') + 2.
 	connectionString := aString asUrl
 ]
 
