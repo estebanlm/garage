@@ -15,6 +15,6 @@ GAODBCConnectionStringTest >> testConnectionString [
 		
 	driver := GAODBCDriver fromConnectionString: connectionString.
 	self 
-		assert: driver connectionString rawConnectionString
+		assert: driver connectionString
 		equals: 'Driver={SQL Server};Server=localhost;Database=test1;'
 ]

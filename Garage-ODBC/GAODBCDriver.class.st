@@ -14,7 +14,7 @@ GAODBCDriver class >> driverId [
 GAODBCDriver class >> fromConnectionString: aConnectionString [
 	
 	^ self new
-		connectionString: aConnectionString;
+		database: aConnectionString database;
 		yourself
 ]
 
@@ -29,4 +29,11 @@ GAODBCDriver class >> supportsEncoding: aString [
 	
 	self flag: #TODO. "Not sure about this, verify"
 	^ true
+]
+
+{ #category : #'as yet unclassified' }
+GAODBCDriver >> initializeConnectionString: aConnectionString [
+	self initialize.
+	
+	
 ]
