@@ -121,7 +121,8 @@ GAConnectionString >> port [
 
 { #category : #accessing }
 GAConnectionString >> rawConnectionString [
-	self shouldBeImplemented.
+	
+	^ rawConnectionString
 ]
 
 { #category : #accessing }
