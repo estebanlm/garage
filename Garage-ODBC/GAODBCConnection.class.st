@@ -1,6 +1,6 @@
 Class {
 	#name : #GAODBCConnection,
-	#superclass : #FFIOpaqueObject,
+	#superclass : #GAODBCObject,
 	#category : #'Garage-ODBC'
 }
 
