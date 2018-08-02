@@ -1,5 +1,5 @@
 Class {
 	#name : #GAODBCError,
 	#superclass : #Error,
-	#category : #'Garage-ODBC'
+	#category : #'Garage-ODBC-Base'
 }

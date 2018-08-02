@@ -5,11 +5,11 @@ Class {
 		'GAODBCSQLConstants',
 		'GAODBCSQLTypes'
 	],
-	#category : #'Garage-ODBC'
+	#category : #'Garage-ODBC-Base'
 }
 
-{ #category : #'as yet unclassified' }
-GAODBCLibrary >> allocHandle: HandleType input: InputHandle output: OutputHandlePtr [
+{ #category : #allocating }
+GAODBCLibrary >> sqlAllocHandle: HandleType input: InputHandle output: OutputHandlePtr [
 
 	^ self ffiCall: #(SQLRETURN SQLAllocHandle(  
       SQLSMALLINT   HandleType,  
@@ -17,8 +17,8 @@ GAODBCLibrary >> allocHandle: HandleType input: InputHandle output: OutputHandle
       SQLHANDLE *   OutputHandlePtr))
 ]
 
-{ #category : #'as yet unclassified' }
-GAODBCLibrary >> freeHandleType: HandleType handle: handle [
+{ #category : #allocating }
+GAODBCLibrary >> sqlFreeHandleType: HandleType handle: handle [
 
 	^ self ffiCall: #(SQLRETURN SQLFreeHandle(  
      SQLSMALLINT   HandleType,  

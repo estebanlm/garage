@@ -43,7 +43,7 @@ Class {
 		'USHORT',
 		'UWORD'
 	],
-	#category : #'Garage-ODBC'
+	#category : #'Garage-ODBC-Base'
 }
 
 { #category : #'class initialization' }

@@ -1,7 +1,7 @@
 Class {
 	#name : #GAODBCReturnSqlSuccess,
 	#superclass : #GAODBCReturn,
-	#category : #'Garage-ODBC'
+	#category : #'Garage-ODBC-Base'
 }
 
 { #category : #testing }

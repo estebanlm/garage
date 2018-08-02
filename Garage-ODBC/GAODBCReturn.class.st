@@ -7,7 +7,7 @@ Class {
 		'SQL_SUCCESS',
 		'SQL_SUCCESS_WITH_INFO'
 	],
-	#category : #'Garage-ODBC'
+	#category : #'Garage-ODBC-Base'
 }
 
 { #category : #'enum declaration' }
@@ -60,4 +60,11 @@ GAODBCReturn >> isError [
 GAODBCReturn >> isSuccess [
  
 	^ false
+]
+
+{ #category : #'as yet unclassified' }
+GAODBCReturn >> verify [ 
+
+	self isSuccess ifTrue: [ ^ self ].
+	GAODBCError signal: 'Error while executing an ODBC command: ', self value asString
 ]
