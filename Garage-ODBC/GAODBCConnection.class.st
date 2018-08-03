@@ -1,6 +1,6 @@
 Class {
-	#name : #GAODBCConnection,
-	#superclass : #GAODBCObject,
+	#name : #GAOdbcConnection,
+	#superclass : #GAOdbcObject,
 	#instVars : [
 		'environment'
 	],
@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #'instance creation' }
-GAODBCConnection class >> onEnvironment: anEnvironment [
+GAOdbcConnection class >> onEnvironment: anEnvironment [
 
 	^ (self fromHandle: (self sqlAllocHandle: anEnvironment handle))
 		environment: anEnvironment;
@@ -16,7 +16,7 @@ GAODBCConnection class >> onEnvironment: anEnvironment [
 ]
 
 { #category : #private }
-GAODBCConnection class >> sqlConnect: handle 
+GAOdbcConnection class >> sqlConnect: handle 
 	server: server
 	serverLength: serverLength 
 	username: username
@@ -28,13 +28,13 @@ GAODBCConnection class >> sqlConnect: handle
 ]
 
 { #category : #private }
-GAODBCConnection class >> sqlHandleType [ 
+GAOdbcConnection class >> sqlHandleType [ 
 	
 	^ SQL_HANDLE_DBC
 ]
 
 { #category : #'as yet unclassified' }
-GAODBCConnection >> connectTo: dataSourceName username: aName password: aPassword [
+GAOdbcConnection >> connectTo: dataSourceName username: aName password: aPassword [
 
 	self withHandleReturnDo: [ 
 		self 
@@ -47,29 +47,29 @@ GAODBCConnection >> connectTo: dataSourceName username: aName password: aPasswor
 ]
 
 { #category : #accessing }
-GAODBCConnection >> environment [
+GAOdbcConnection >> environment [
 	^ environment
 ]
 
-{ #category : #accessing }
-GAODBCConnection >> environment: anObject [
-	environment := anObject
+{ #category : #private }
+GAOdbcConnection >> environment: anEnvironment [
+	environment := anEnvironment
 ]
 
 { #category : #query }
-GAODBCConnection >> execute: aString [
+GAOdbcConnection >> execute: aString [
 
 	^ self newStatement execute: aString
 ]
 
 { #category : #query }
-GAODBCConnection >> newStatement [
+GAOdbcConnection >> newStatement [
 
-	^ GAODBCStatement onConnection: self
+	^ GAOdbcStatement onConnection: self
 ]
 
 { #category : #private }
-GAODBCConnection >> sqlConnectTo: ServerName length: NameLength1 
+GAOdbcConnection >> sqlConnectTo: ServerName length: NameLength1 
 	username: UserName length: NameLength2 
 	authentication: Authentication length: NameLength3 [
 

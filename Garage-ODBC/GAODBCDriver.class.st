@@ -1,5 +1,5 @@
 Class {
-	#name : #GAODBCDriver,
+	#name : #GAOdbcDriver,
 	#superclass : #GADriver,
 	#instVars : [
 		'environment'
@@ -8,13 +8,13 @@ Class {
 }
 
 { #category : #drivers }
-GAODBCDriver class >> driverId [
+GAOdbcDriver class >> driverId [
 
 	^ 'odbc'
 ]
 
 { #category : #'instance creation' }
-GAODBCDriver class >> fromConnectionString: aConnectionString [
+GAOdbcDriver class >> fromConnectionString: aConnectionString [
 	
 	^ self new
 		connectionString: aConnectionString;
@@ -22,39 +22,39 @@ GAODBCDriver class >> fromConnectionString: aConnectionString [
 ]
 
 { #category : #initialize }
-GAODBCDriver class >> initialize [
+GAOdbcDriver class >> initialize [
 
 	self subscribeDriver
 ]
 
 { #category : #'as yet unclassified' }
-GAODBCDriver class >> newFixture [
+GAOdbcDriver class >> newFixture [
 	
-	^ GADriverODBCTestFixture new
+	^ GADriverOdbcTestFixture new
 ]
 
 { #category : #testing }
-GAODBCDriver class >> supportsEncoding: aString [ 
+GAOdbcDriver class >> supportsEncoding: aString [ 
 	
 	self flag: #TODO. "Not sure about this, verify"
 	^ true
 ]
 
 { #category : #initialization }
-GAODBCDriver >> initialize [
+GAOdbcDriver >> initialize [
 
 	super initialize.
 	self initializeEnvironment
 ]
 
 { #category : #initialization }
-GAODBCDriver >> initializeEnvironment [
+GAOdbcDriver >> initializeEnvironment [
 
 	environment := self newEnvironment
 ]
 
 { #category : #'private factory' }
-GAODBCDriver >> newEnvironment [
+GAOdbcDriver >> newEnvironment [
 
-	^ GAODBCEnvironment allocateEnvironment
+	^ GAOdbcEnvironment allocateEnvironment
 ]

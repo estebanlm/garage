@@ -1,5 +1,5 @@
 Class {
-	#name : #GAODBCTestCase,
+	#name : #GAOdbcTestCase,
 	#superclass : #TestCase,
 	#instVars : [
 		'environment',
@@ -9,25 +9,25 @@ Class {
 }
 
 { #category : #testing }
-GAODBCTestCase class >> isAbstract [
+GAOdbcTestCase class >> isAbstract [
 
-	^ self = GAODBCTestCase
+	^ self = GAOdbcTestCase
 ]
 
 { #category : #accessing }
-GAODBCTestCase >> connection [
+GAOdbcTestCase >> connection [
 
-	^ connection ifNil: [ connection := self newConnection ]
+	^ connection ifNil: [ connection := self newTestConnection ]
 ]
 
 { #category : #accessing }
-GAODBCTestCase >> environment [
+GAOdbcTestCase >> environment [
 
-	^ environment ifNil: [ environment := self newEnvironment ]
+	^ environment ifNil: [ environment := self newTestEnvironment ]
 ]
 
 { #category : #'private factory' }
-GAODBCTestCase >> newConnection [
+GAOdbcTestCase >> newTestConnection [
 	| newConnection |
 	
 	newConnection := self environment newConnection.
@@ -40,17 +40,23 @@ GAODBCTestCase >> newConnection [
 ]
 
 { #category : #'private factory' }
-GAODBCTestCase >> newEnvironment [
+GAOdbcTestCase >> newTestEnvironment [
 	| newEnvironment |
 
-	newEnvironment := GAODBCEnvironment allocateEnvironment.
+	newEnvironment := GAOdbcEnvironment allocateEnvironment.
 	newEnvironment setODBCVersion3.
 
 	^ newEnvironment
 ]
 
 { #category : #'private factory' }
-GAODBCTestCase >> newStatement [
+GAOdbcTestCase >> newTestResultSet [
+
+	^ self newTestStatement execute: 'SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE=''BASE TABLE'''.	
+]
+
+{ #category : #'private factory' }
+GAOdbcTestCase >> newTestStatement [
 	
 	^ self connection newStatement
 ]

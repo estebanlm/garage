@@ -1,24 +1,24 @@
 Class {
-	#name : #GAODBCEnvironmentTest,
+	#name : #GAOdbcEnvironmentTest,
 	#superclass : #TestCase,
 	#category : #'Garage-ODBC-Tests'
 }
 
 { #category : #tests }
-GAODBCEnvironmentTest >> testAllocateEnvironment [
+GAOdbcEnvironmentTest >> testAllocateEnvironment [
 	| environment |
 	
-	environment := GAODBCEnvironment allocateEnvironment.
+	environment := GAOdbcEnvironment allocateEnvironment.
 	self deny: environment handle isNil.
 	self deny: environment handle isNull
 ]
 
 { #category : #tests }
-GAODBCEnvironmentTest >> testSetAttribute [
+GAOdbcEnvironmentTest >> testSetAttribute [
 	"smoke test of set attribute. If it passes, it works ;)"
 	| environment |
 	
-	environment := GAODBCEnvironment allocateEnvironment.
+	environment := GAOdbcEnvironment allocateEnvironment.
 	
 	"this will execute a set odbc version to 3"
 	environment setAttribute: 200 to: 3

@@ -1,35 +1,35 @@
 Class {
-	#name : #GAODBCEnvironment,
-	#superclass : #GAODBCObject,
+	#name : #GAOdbcEnvironment,
+	#superclass : #GAOdbcObject,
 	#category : #'Garage-ODBC-Driver'
 }
 
 { #category : #'instance creation' }
-GAODBCEnvironment class >> allocateEnvironment [
+GAOdbcEnvironment class >> allocateEnvironment [
 	
 	^ self fromHandle: (self sqlAllocHandle: ExternalAddress null)
 ]
 
 { #category : #private }
-GAODBCEnvironment class >> sqlHandleType [ 
+GAOdbcEnvironment class >> sqlHandleType [ 
 	
 	^ SQL_HANDLE_ENV
 ]
 
 { #category : #initialization }
-GAODBCEnvironment >> initialize [
+GAOdbcEnvironment >> initialize [
 	super initialize.
 	self autoRelease
 ]
 
 { #category : #factory }
-GAODBCEnvironment >> newConnection [
+GAOdbcEnvironment >> newConnection [
 	
-	^ GAODBCConnection onEnvironment: self
+	^ GAOdbcConnection onEnvironment: self
 ]
 
 { #category : #accessing }
-GAODBCEnvironment >> setAttribute: aName to: aValue [
+GAOdbcEnvironment >> setAttribute: aName to: aValue [
 	
 	aValue isInteger ifTrue: [ 
 		self withHandleReturnDo: [ 
@@ -46,7 +46,7 @@ GAODBCEnvironment >> setAttribute: aName to: aValue [
 ]
 
 { #category : #initialization }
-GAODBCEnvironment >> setODBCVersion3 [
+GAOdbcEnvironment >> setODBCVersion3 [
 
 	^ self 
 		setAttribute: SQL_ATTR_ODBC_VERSION
@@ -54,7 +54,7 @@ GAODBCEnvironment >> setODBCVersion3 [
 ]
 
 { #category : #private }
-GAODBCEnvironment >> sqlSetAttribute: Attribute toBytes: ValuePtr length: StringLength [
+GAOdbcEnvironment >> sqlSetAttribute: Attribute toBytes: ValuePtr length: StringLength [
 	^ self ffiCall: #(SQLRETURN SQLSetEnvAttr(  
     	self,  
      	SQLINTEGER   Attribute,  
@@ -63,7 +63,7 @@ GAODBCEnvironment >> sqlSetAttribute: Attribute toBytes: ValuePtr length: String
 ]
 
 { #category : #private }
-GAODBCEnvironment >> sqlSetAttribute: Attribute toInteger: Value [
+GAOdbcEnvironment >> sqlSetAttribute: Attribute toInteger: Value [
 	^ self ffiCall: #(SQLRETURN SQLSetEnvAttr(  
     	self,  
      	SQLINTEGER 	Attribute,  
@@ -72,7 +72,7 @@ GAODBCEnvironment >> sqlSetAttribute: Attribute toInteger: Value [
 ]
 
 { #category : #private }
-GAODBCEnvironment >> sqlSetAttribute: Attribute toString: Value length: StringLength [
+GAOdbcEnvironment >> sqlSetAttribute: Attribute toString: Value length: StringLength [
 	^ self ffiCall: #(SQLRETURN SQLSetEnvAttr(  
     	self,  
      	SQLINTEGER   	Attribute,  

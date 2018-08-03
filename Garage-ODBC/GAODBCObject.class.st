@@ -1,31 +1,37 @@
 Class {
-	#name : #GAODBCObject,
+	#name : #GAOdbcObject,
 	#superclass : #FFIOpaqueObject,
-	#traits : 'TGAODBCLibrary',
-	#classTraits : 'TGAODBCLibrary classTrait',
+	#traits : 'TGAOdbcLibrary',
+	#classTraits : 'TGAOdbcLibrary classTrait',
 	#pools : [
-		'GAODBCSQLConstants',
-		'GAODBCSQLTypes'
+		'GAOdbcSqlConstants',
+		'GAOdbcSqlTypes'
 	],
 	#category : #'Garage-ODBC-Base'
 }
 
+{ #category : #'as yet unclassified' }
+GAOdbcObject class >> ffiLibraryName [
+
+	^ GAOdbcLibrary
+]
+
 { #category : #finalization }
-GAODBCObject class >> finalizeResourceData: handle [
+GAOdbcObject class >> finalizeResourceData: handle [
 
 	(handle isNil or: [ handle isNull ]) ifTrue: [ ^ self ].
 
-	^ GAODBCLibrary uniqueInstance
+	^ GAOdbcLibrary uniqueInstance
 		sqlFreeHandleType: self sqlHandleType 
 		handle: handle
 ]
 
 { #category : #private }
-GAODBCObject class >> sqlAllocHandle: inputHandle [
+GAOdbcObject class >> sqlAllocHandle: inputHandle [
 	| newHandle |
 
 	newHandle := ExternalAddress new.
-	GAODBCLibrary uniqueInstance 
+	GAOdbcLibrary uniqueInstance 
 		sqlAllocHandle: self sqlHandleType
 		input: inputHandle 
 		output: newHandle.
@@ -34,14 +40,14 @@ GAODBCObject class >> sqlAllocHandle: inputHandle [
 ]
 
 { #category : #private }
-GAODBCObject class >> sqlHandleType [ 
+GAOdbcObject class >> sqlHandleType [ 
 	
 	^ self subclassResponsibility
 		
 ]
 
 { #category : #enumerating }
-GAODBCObject >> withHandleReturnDo: aBlock [
+GAOdbcObject >> withHandleReturnDo: aBlock [
 
 	aBlock value verify
 	

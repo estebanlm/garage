@@ -1,5 +1,5 @@
 Class {
-	#name : #GAODBCReturn,
+	#name : #GAOdbcReturn,
 	#superclass : #FFIExternalEnumeration,
 	#classVars : [
 		'SQL_ERROR',
@@ -11,7 +11,7 @@ Class {
 }
 
 { #category : #'enum declaration' }
-GAODBCReturn class >> enumDecl [
+GAOdbcReturn class >> enumDecl [
 	^ #(
  SQL_SUCCESS                 0
  SQL_SUCCESS_WITH_INFO       1
@@ -21,50 +21,50 @@ GAODBCReturn class >> enumDecl [
 ]
 
 { #category : #'class initialization' }
-GAODBCReturn class >> initialize [
+GAOdbcReturn class >> initialize [
 
 	self buildClassVariables
 ]
 
 { #category : #'accessing enum' }
-GAODBCReturn class >> sqlError [
+GAOdbcReturn class >> sqlError [
 	"This method was automatically generated"
 	^ SQL_ERROR
 ]
 
 { #category : #'accessing enum' }
-GAODBCReturn class >> sqlInvalidHandle [
+GAOdbcReturn class >> sqlInvalidHandle [
 	"This method was automatically generated"
 	^ SQL_INVALID_HANDLE
 ]
 
 { #category : #'accessing enum' }
-GAODBCReturn class >> sqlSuccess [
+GAOdbcReturn class >> sqlSuccess [
 	"This method was automatically generated"
 	^ SQL_SUCCESS
 ]
 
 { #category : #'accessing enum' }
-GAODBCReturn class >> sqlSuccessWithInfo [
+GAOdbcReturn class >> sqlSuccessWithInfo [
 	"This method was automatically generated"
 	^ SQL_SUCCESS_WITH_INFO
 ]
 
 { #category : #testing }
-GAODBCReturn >> isError [
+GAOdbcReturn >> isError [
  
 	^ self isSuccess not
 ]
 
 { #category : #testing }
-GAODBCReturn >> isSuccess [
+GAOdbcReturn >> isSuccess [
  
 	^ false
 ]
 
 { #category : #'as yet unclassified' }
-GAODBCReturn >> verify [ 
+GAOdbcReturn >> verify [ 
 
 	self isSuccess ifTrue: [ ^ self ].
-	GAODBCError signal: 'Error while executing an ODBC command: ', self value asString
+	GAOdbcError signal: 'Error while executing an ODBC command: ', self value asString
 ]

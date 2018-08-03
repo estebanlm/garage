@@ -1,5 +1,5 @@
 Class {
-	#name : #GAODBCReturnSqlError,
-	#superclass : #GAODBCReturn,
+	#name : #GAOdbcReturnSqlError,
+	#superclass : #GAOdbcReturn,
 	#category : #'Garage-ODBC-Base'
 }

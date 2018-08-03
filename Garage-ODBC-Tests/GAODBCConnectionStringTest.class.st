@@ -1,11 +1,11 @@
 Class {
-	#name : #GAODBCConnectionStringTest,
+	#name : #GAOdbcConnectionStringTest,
 	#superclass : #TestCase,
 	#category : #'Garage-ODBC-Tests'
 }
 
 { #category : #tests }
-GAODBCConnectionStringTest >> testConnectionString [
+GAOdbcConnectionStringTest >> testConnectionString [
 	| connectionString driver |
 
 	connectionString := GAConnectionString new
@@ -13,7 +13,7 @@ GAODBCConnectionStringTest >> testConnectionString [
 		initializeFromString: 'odbc://Driver={SQL Server};Server=localhost;Database=test1;';
 		yourself.
 		
-	driver := GAODBCDriver fromConnectionString: connectionString.
+	driver := GAOdbcDriver fromConnectionString: connectionString.
 	self 
 		assert: driver connectionString rawConnectionString
 		equals: 'Driver={SQL Server};Server=localhost;Database=test1;'

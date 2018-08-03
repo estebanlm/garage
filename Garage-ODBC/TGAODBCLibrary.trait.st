@@ -1,16 +1,16 @@
 Trait {
-	#name : #TGAODBCLibrary,
+	#name : #TGAOdbcLibrary,
 	#category : #'Garage-ODBC-Base'
 }
 
 { #category : #'as yet unclassified' }
-TGAODBCLibrary classSide >> ffiLibraryName [
+TGAOdbcLibrary classSide >> ffiLibraryName [
 
-	^ GAODBCLibrary
+	^ GAOdbcLibrary
 ]
 
 { #category : #'library path' }
-TGAODBCLibrary >> ffiLibraryName [
+TGAOdbcLibrary >> ffiLibraryName [
 
 	^ self class ffiLibraryName
 ]

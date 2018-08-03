@@ -1,5 +1,5 @@
 Class {
-	#name : #GAODBCSQLConstants,
+	#name : #GAOdbcSqlConstants,
 	#superclass : #SharedPool,
 	#classVars : [
 		'SQL_ATTR_ODBC_VERSION',
@@ -14,13 +14,13 @@ Class {
 }
 
 { #category : #'class initialization' }
-GAODBCSQLConstants class >> initialize [
+GAOdbcSqlConstants class >> initialize [
 
 	self initializeSQLConstants
 ]
 
 { #category : #'class initialization' }
-GAODBCSQLConstants class >> initializeSQLConstants [
+GAOdbcSqlConstants class >> initializeSQLConstants [
 
 	SQL_HANDLE_ENV 	:= 1.
 	SQL_HANDLE_DBC 	:= 2.

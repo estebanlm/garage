@@ -1,5 +1,5 @@
 Class {
-	#name : #GAODBCSQLTypes,
+	#name : #GAOdbcSqlTypes,
 	#superclass : #SharedPool,
 	#classVars : [
 		'HDBC',
@@ -47,12 +47,12 @@ Class {
 }
 
 { #category : #'class initialization' }
-GAODBCSQLTypes class >> initialize [
+GAOdbcSqlTypes class >> initialize [
 	self initializeODBCTypes
 ]
 
 { #category : #'class initialization' }
-GAODBCSQLTypes class >> initializeODBCTypes [
+GAOdbcSqlTypes class >> initializeODBCTypes [
 
 	SQLCHAR	:=	#uchar.
 	SQLSCHAR	:=	#char.
@@ -71,7 +71,7 @@ GAODBCSQLTypes class >> initializeODBCTypes [
 	SQLTIME	:=	#uchar.
 	SQLTIMESTAMP	:=	#uchar.
 	SQLVARCHAR	:=	#uchar.
-	SQLRETURN	:=	#GAODBCReturn.
+	SQLRETURN	:=	#GAOdbcReturn.
 	SQLHANDLE	:=	#'void *'.
 	SQLHENV 	:=	#SQLHANDLE.
 	SQLHDBC	:=	#SQLHANDLE.

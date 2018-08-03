@@ -1,11 +1,11 @@
 Class {
-	#name : #GADriverODBCTestFixture,
+	#name : #GADriverOdbcTestFixture,
 	#superclass : #GADriverTestFixture,
 	#category : #'Garage-ODBC-Tests'
 }
 
 { #category : #'instance creation' }
-GADriverODBCTestFixture class >> connectionString: aConnectionString [
+GADriverOdbcTestFixture class >> connectionString: aConnectionString [
 
 	^ self 
 		setupConnectionString: aConnectionString 
@@ -13,13 +13,13 @@ GADriverODBCTestFixture class >> connectionString: aConnectionString [
 ]
 
 { #category : #'as yet unclassified' }
-GADriverODBCTestFixture >> connection [
+GADriverOdbcTestFixture >> connection [
 	
 	^ setupConnection
 ]
 
 { #category : #'as yet unclassified' }
-GADriverODBCTestFixture >> createDatabase [
+GADriverOdbcTestFixture >> createDatabase [
 
 	"Nothing"
 	| encoding |	
@@ -28,7 +28,7 @@ GADriverODBCTestFixture >> createDatabase [
 ]
 
 { #category : #'as yet unclassified' }
-GADriverODBCTestFixture >> createTables [
+GADriverOdbcTestFixture >> createTables [
 
 	self connection execute: 'CREATE TABLE student(
 	   id INTEGER,
@@ -65,14 +65,14 @@ GADriverODBCTestFixture >> createTables [
 ]
 
 { #category : #'as yet unclassified' }
-GADriverODBCTestFixture >> dropDatabase [
+GADriverOdbcTestFixture >> dropDatabase [
 
 	"We remove the database file"
 	self connection isMemory ifFalse: [ self connection database asFileReference delete ].
 ]
 
 { #category : #'as yet unclassified' }
-GADriverODBCTestFixture >> dropTables [
+GADriverOdbcTestFixture >> dropTables [
 
 	self connection execute: 'DROP TABLE course'.
 	self connection execute: 'DROP TABLE signature'.
@@ -80,14 +80,14 @@ GADriverODBCTestFixture >> dropTables [
 ]
 
 { #category : #'as yet unclassified' }
-GADriverODBCTestFixture >> newConnection: options [
+GADriverOdbcTestFixture >> newConnection: options [
 
 	"We always create the connection for testing with the same options in sqlite by the moment"
 	^ setupConnection
 ]
 
 { #category : #'as yet unclassified' }
-GADriverODBCTestFixture >> tearDown [
+GADriverOdbcTestFixture >> tearDown [
 
 	setupConnection ifNotNil: #close.
 	setupConnection := nil.

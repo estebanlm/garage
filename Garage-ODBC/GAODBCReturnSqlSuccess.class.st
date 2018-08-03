@@ -1,11 +1,11 @@
 Class {
-	#name : #GAODBCReturnSqlSuccess,
-	#superclass : #GAODBCReturn,
+	#name : #GAOdbcReturnSqlSuccess,
+	#superclass : #GAOdbcReturn,
 	#category : #'Garage-ODBC-Base'
 }
 
 { #category : #testing }
-GAODBCReturnSqlSuccess >> isSuccess [
+GAOdbcReturnSqlSuccess >> isSuccess [
 	
 	^ true
 ]

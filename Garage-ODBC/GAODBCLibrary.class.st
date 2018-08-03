@@ -1,15 +1,15 @@
 Class {
-	#name : #GAODBCLibrary,
+	#name : #GAOdbcLibrary,
 	#superclass : #FFILibrary,
 	#pools : [
-		'GAODBCSQLConstants',
-		'GAODBCSQLTypes'
+		'GAOdbcSqlConstants',
+		'GAOdbcSqlTypes'
 	],
 	#category : #'Garage-ODBC-Base'
 }
 
 { #category : #allocating }
-GAODBCLibrary >> sqlAllocHandle: HandleType input: InputHandle output: OutputHandlePtr [
+GAOdbcLibrary >> sqlAllocHandle: HandleType input: InputHandle output: OutputHandlePtr [
 
 	^ self ffiCall: #(SQLRETURN SQLAllocHandle(  
       SQLSMALLINT   HandleType,  
@@ -18,7 +18,7 @@ GAODBCLibrary >> sqlAllocHandle: HandleType input: InputHandle output: OutputHan
 ]
 
 { #category : #allocating }
-GAODBCLibrary >> sqlFreeHandleType: HandleType handle: handle [
+GAOdbcLibrary >> sqlFreeHandleType: HandleType handle: handle [
 
 	^ self ffiCall: #(SQLRETURN SQLFreeHandle(  
      SQLSMALLINT   HandleType,  
@@ -26,6 +26,6 @@ GAODBCLibrary >> sqlFreeHandleType: HandleType handle: handle [
 ]
 
 { #category : #'accessing platform' }
-GAODBCLibrary >> win32ModuleName [ 
+GAOdbcLibrary >> win32ModuleName [ 
 	^ 'odbc32.dll'
 ]

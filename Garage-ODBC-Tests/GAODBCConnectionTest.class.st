@@ -1,15 +1,15 @@
 Class {
-	#name : #GAODBCConnectionTest,
-	#superclass : #GAODBCTestCase,
+	#name : #GAOdbcConnectionTest,
+	#superclass : #GAOdbcTestCase,
 	#category : #'Garage-ODBC-Tests'
 }
 
 { #category : #tests }
-GAODBCConnectionTest >> testConnectToUsernamePassword [
-	| connection |
+GAOdbcConnectionTest >> testConnectToUsernamePassword [
+	| conn |
 
-	connection := self environment newConnection.
-	connection 
+	conn := self environment newConnection.
+	conn 
 		connectTo: 'test1'
 		username: ''
 		password: ''.
@@ -19,10 +19,10 @@ GAODBCConnectionTest >> testConnectToUsernamePassword [
 ]
 
 { #category : #tests }
-GAODBCConnectionTest >> testNewStatement [
+GAOdbcConnectionTest >> testNewStatement [
 	| statement |
 	
-	statement := self newConnection newStatement.
+	statement := self newTestConnection newStatement.
 	self assert: statement notNil.
 	self deny: statement handle isNull
 ]
